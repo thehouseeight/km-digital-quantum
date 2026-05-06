@@ -7,8 +7,87 @@
     <title>Bosnia &amp; Herzegovina KM/BAM Cryptocurrency Platform</title>
     <script type="module" crossorigin src="/assets/index-DxLIMy5G.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DeaRmwct.css">
+    <style>
+      .animated-bg {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .animated-bg::before {
+        content: "";
+        position: absolute;
+        inset: -5%;
+        background-image: url('/assets/castle-bg.webp');
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.45) saturate(1.1);
+        animation: bgKenBurns 30s ease-in-out infinite alternate;
+      }
+      .animated-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 20% 30%, rgba(56,189,248,0.18), transparent 45%),
+          radial-gradient(circle at 80% 70%, rgba(168,85,247,0.18), transparent 45%),
+          linear-gradient(120deg, rgba(15,23,42,0.55), rgba(2,6,23,0.75));
+        background-size: 200% 200%;
+        animation: bgGradientShift 18s ease-in-out infinite alternate;
+      }
+      .animated-bg .particles {
+        position: absolute;
+        inset: 0;
+      }
+      .animated-bg .particles span {
+        position: absolute;
+        bottom: -10vh;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(125, 211, 252, 0.55);
+        box-shadow: 0 0 10px rgba(125, 211, 252, 0.7);
+        animation: bgFloat linear infinite;
+      }
+      .animated-bg .particles span:nth-child(1)  { left: 5%;  animation-duration: 22s; animation-delay: 0s; }
+      .animated-bg .particles span:nth-child(2)  { left: 15%; animation-duration: 28s; animation-delay: 3s; }
+      .animated-bg .particles span:nth-child(3)  { left: 25%; animation-duration: 19s; animation-delay: 6s; width: 4px; height: 4px; }
+      .animated-bg .particles span:nth-child(4)  { left: 35%; animation-duration: 26s; animation-delay: 1s; }
+      .animated-bg .particles span:nth-child(5)  { left: 45%; animation-duration: 31s; animation-delay: 4s; width: 8px; height: 8px; }
+      .animated-bg .particles span:nth-child(6)  { left: 55%; animation-duration: 24s; animation-delay: 7s; }
+      .animated-bg .particles span:nth-child(7)  { left: 65%; animation-duration: 20s; animation-delay: 2s; width: 5px; height: 5px; }
+      .animated-bg .particles span:nth-child(8)  { left: 75%; animation-duration: 29s; animation-delay: 5s; }
+      .animated-bg .particles span:nth-child(9)  { left: 85%; animation-duration: 23s; animation-delay: 8s; }
+      .animated-bg .particles span:nth-child(10) { left: 92%; animation-duration: 27s; animation-delay: 0.5s; width: 4px; height: 4px; }
+      @keyframes bgKenBurns {
+        0%   { transform: scale(1)    translate(0, 0); }
+        100% { transform: scale(1.12) translate(-2%, -1%); }
+      }
+      @keyframes bgGradientShift {
+        0%   { background-position: 0% 0%; }
+        100% { background-position: 100% 100%; }
+      }
+      @keyframes bgFloat {
+        0%   { transform: translateY(0) translateX(0); opacity: 0; }
+        10%  { opacity: 1; }
+        90%  { opacity: 1; }
+        100% { transform: translateY(-115vh) translateX(20px); opacity: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .animated-bg::before,
+        .animated-bg::after,
+        .animated-bg .particles span { animation: none; }
+      }
+    </style>
   </head>
   <body>
+    <div class="animated-bg" aria-hidden="true">
+      <div class="particles">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
     <div id="root"></div>
   </body>
 </html>
